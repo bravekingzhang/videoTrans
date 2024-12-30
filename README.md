@@ -71,6 +71,15 @@ To run tests:
 python -m pytest tests/
 ```
 
+## Docker
+
+```bash
+# 在云服务器上
+git clone <your-repo>
+cd videoTrans
+docker-compose up -d
+```
+
 ## License
 
-MIT License 
+MIT License

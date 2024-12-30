@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - MODEL_CACHE_DIR=/app/models
+      - USE_CUDA=true
+      - USE_GPU=true
+    volumes:
+      - model-cache:/app/models
+      - ./temp:/app/temp
+      - ./output:/app/output
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+volumes:
+  model-cache:
